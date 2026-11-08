@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mumin App Store - Admin</title>
+<title>Mumin App Store - Admin Dashboard</title>
+
 <style>
 *{box-sizing:border-box}
 body{
@@ -14,287 +14,444 @@ body{
   color:#eef7ff;
 }
 header{
-  padding:20px;
+  padding:18px;
   background:#0d2034;
-  border-bottom:1px solid #183b52;
+  border-bottom:1px solid #24445c;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:12px;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
 }
 .logo{font-size:21px;font-weight:bold;color:#48d6c2}
 .logo span{color:white}
-main{max-width:850px;margin:30px auto;padding:15px}
+main{max-width:1050px;margin:25px auto;padding:14px}
 .panel{
   background:#10243a;
   border:1px solid #24445c;
-  border-radius:16px;
-  padding:22px;
+  border-radius:15px;
+  padding:20px;
   margin-bottom:20px;
 }
-h2{margin-top:0;color:#55ddc9}
-label{display:block;margin:15px 0 7px;color:#c8d8e8}
+h2{color:#55ddc9;margin-top:0}
+label{
+  display:block;
+  margin:14px 0 7px;
+  color:#c8d8e8;
+}
 input,textarea,select{
   width:100%;
-  padding:13px;
+  padding:12px;
   border:1px solid #31536c;
-  border-radius:9px;
+  border-radius:8px;
   background:#081827;
   color:white;
   font-size:15px;
 }
-textarea{min-height:90px;resize:vertical}
+textarea{min-height:85px;resize:vertical}
 button{
   border:0;
-  border-radius:9px;
-  padding:13px 18px;
+  border-radius:8px;
+  padding:11px 16px;
   font-weight:bold;
   cursor:pointer;
   background:#25bba9;
   color:#061923;
-  margin-top:15px;
+  margin-top:12px;
 }
 button:disabled{opacity:.5;cursor:not-allowed}
 .secondary{background:#24445c;color:white}
 .danger{background:#a33b48;color:white}
+.edit{background:#d5a63c;color:#17202a}
 .full{width:100%}
 .hidden{display:none!important}
-.message{margin-top:14px;padding:12px;border-radius:8px;line-height:1.5}
+.message{margin-top:13px;padding:12px;border-radius:8px}
 .success{background:#123d35;color:#8df4d7}
 .error{background:#4a202b;color:#ffb8c0}
-.app{
-  padding:14px;
-  background:#0a1a2a;
-  border:1px solid #24445c;
-  border-radius:10px;
-  margin-top:12px;
-  overflow-wrap:anywhere;
-}
-.app strong{color:#5be0cd}
 .small{font-size:13px;color:#a9bfd0}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:550px){.row{grid-template-columns:1fr}}
+.app{
+  padding:15px;
+  background:#0a1a2a;
+  border:1px solid #24445c;
+  border-radius:11px;
+  margin-top:13px;
+  overflow-wrap:anywhere;
+}
+.app strong{color:#5be0cd;font-size:17px}
+.app-actions{display:flex;gap:8px;flex-wrap:wrap}
+.app-actions button{margin-top:10px}
+.preview{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-top:12px;
+}
+.preview img{
+  width:65px;height:65px;object-fit:cover;
+  border-radius:12px;background:#fff;
+}
+.section-title{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;flex-wrap:wrap;
+}
+#formTitle{color:#55ddc9}
+@media(max-width:600px){
+  .row{grid-template-columns:1fr}
+  main{padding:10px}
+  .panel{padding:15px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">☾ Mumin <span>App Store</span></div>
+  <div class="logo">☾ Mumin <span>App Store Admin</span></div>
   <button id="logoutBtn" class="secondary hidden">Logout</button>
 </header>
 
 <main>
 
-  <section id="loginSection" class="panel">
-    <h2>Admin Login</h2>
-    <p class="small">Mumin App Store Administration Panel</p>
+<section id="loginSection" class="panel">
+  <h2>Admin Login</h2>
+  <p class="small">Mumin App Store Management System</p>
 
-    <form id="loginForm">
-      <label>Admin Password</label>
-      <input id="password" type="password"
-        placeholder="Enter your admin password"
-        required autocomplete="current-password">
-      <button class="full" id="loginBtn" type="submit">
-        Login
+  <form id="loginForm">
+    <label>Admin Password</label>
+    <input id="password" type="password" required
+      placeholder="Enter admin password">
+    <button class="full" id="loginBtn" type="submit">Login</button>
+  </form>
+
+  <div id="loginMessage"></div>
+</section>
+
+<section id="dashboard" class="hidden">
+
+  <div class="panel">
+    <h2>Welcome, Admin!</h2>
+    <p>এখান থেকে তোমার App Store-এর সব অ্যাপ পরিচালনা করতে পারবে।</p>
+    <p class="small">নতুন অ্যাপ যোগ, পুরোনো অ্যাপ Edit এবং Delete করতে পারবে।</p>
+  </div>
+
+  <div class="panel" id="editorPanel">
+
+    <div class="section-title">
+      <h2 id="formTitle">➕ Add New App</h2>
+      <button id="cancelEdit" class="secondary hidden" type="button">
+        Cancel Edit
       </button>
-    </form>
-    <div id="loginMessage"></div>
-  </section>
-
-  <section id="dashboard" class="hidden">
-
-    <div class="panel">
-      <h2>Welcome, Admin!</h2>
-      <p>এখান থেকে Mumin App Store-এ নতুন অ্যাপ যোগ করতে পারবে।</p>
-      <p class="small">নতুন অ্যাপ যোগ করলে সেটি Database-এ সংরক্ষিত হবে।</p>
     </div>
 
-    <div class="panel">
-      <h2>➕ Add New App</h2>
+    <form id="appForm">
 
-      <form id="appForm">
+      <label>App Name *</label>
+      <input name="name" required placeholder="Example: Mumin AI">
 
-        <label>App Name *</label>
-        <input name="name" required placeholder="Example: Mumin AI">
+      <label>App Description</label>
+      <textarea name="description"
+        placeholder="অ্যাপ সম্পর্কে বিস্তারিত লিখো"></textarea>
 
-        <label>Description</label>
-        <textarea name="description"
-          placeholder="অ্যাপ সম্পর্কে সংক্ষিপ্ত বিবরণ"></textarea>
-
-        <label>Category *</label>
-        <select name="category" required>
-          <option value="">Select Category</option>
-          <option>AI</option>
-          <option>Islamic</option>
-          <option>Education</option>
-          <option>Tools</option>
-          <option>Productivity</option>
-          <option>Business</option>
-          <option>Finance</option>
-          <option>Communication</option>
-          <option>Social</option>
-          <option>Entertainment</option>
-          <option>Games</option>
-          <option>Health & Fitness</option>
-          <option>Photography</option>
-          <option>Lifestyle</option>
-          <option>News & Books</option>
-          <option>Developer Tools</option>
-        </select>
-
-        <label>App Logo URL</label>
-        <input name="icon_url" type="url"
-          placeholder="https://example.com/logo.png">
-
-        <label>Web App URL</label>
-        <input name="app_url" type="url"
-          placeholder="https://example.com">
-
-        <label>APK Download URL</label>
-        <input name="download_url" type="url"
-          placeholder="https://example.com/app.apk">
-
-        <div class="row">
-          <div>
-            <label>Platform</label>
-            <select name="platform">
-              <option value="web">Web / PWA</option>
-              <option value="android">Android APK</option>
-              <option value="both">Both</option>
-            </select>
-          </div>
-          <div>
-            <label>Version</label>
-            <input name="version" value="1.0.0">
-          </div>
+      <div class="row">
+        <div>
+          <label>Category *</label>
+          <select name="category" required>
+            <option value="">Select Category</option>
+            <option>AI</option>
+            <option>Islamic</option>
+            <option>Education</option>
+            <option>Tools</option>
+            <option>Productivity</option>
+            <option>Business</option>
+            <option>Finance</option>
+            <option>Communication</option>
+            <option>Social</option>
+            <option>Entertainment</option>
+            <option>Games</option>
+            <option>Health & Fitness</option>
+            <option>Photography</option>
+            <option>Lifestyle</option>
+            <option>News & Books</option>
+            <option>Developer Tools</option>
+          </select>
         </div>
 
-        <button id="addBtn" class="full" type="submit">
-          Publish App
-        </button>
-      </form>
+        <div>
+          <label>Developer Name</label>
+          <input name="developer" placeholder="Mumin Al Mujahid">
+        </div>
+      </div>
+
+      <label>App Logo URL</label>
+      <input name="icon_url" type="url"
+        placeholder="https://example.com/logo.png">
+
+      <div class="row">
+        <div>
+          <label>Web App URL</label>
+          <input name="app_url" type="url"
+            placeholder="https://example.com">
+        </div>
+
+        <div>
+          <label>APK Download URL</label>
+          <input name="download_url" type="url"
+            placeholder="https://example.com/app.apk">
+        </div>
+      </div>
+
+      <label>App Screenshots URL</label>
+      <textarea name="screenshots"
+        placeholder="প্রতিটি ছবির URL আলাদা লাইনে দাও।&#10;https://example.com/screenshot1.jpg&#10;https://example.com/screenshot2.jpg"></textarea>
+      <p class="small">একাধিক Screenshot দিতে চাইলে প্রতিটি URL নতুন লাইনে লিখবে।</p>
+
+      <label>App Features</label>
+      <textarea name="features"
+        placeholder="প্রতিটি Feature নতুন লাইনে লিখো।"></textarea>
+
+      <label>How to Use / Instructions</label>
+      <textarea name="instructions"
+        placeholder="অ্যাপটি কীভাবে ব্যবহার করতে হয় লিখো।"></textarea>
+
+      <div class="row">
+        <div>
+          <label>Platform</label>
+          <select name="platform">
+            <option value="web">Web / PWA</option>
+            <option value="android">Android APK</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Version</label>
+          <input name="version" value="1.0.0">
+        </div>
+      </div>
+
+      <button id="saveBtn" class="full" type="submit">
+        Publish App
+      </button>
 
       <div id="appMessage"></div>
+    </form>
+
+  </div>
+
+  <div class="panel">
+    <div class="section-title">
+      <h2>📱 Manage Published Apps</h2>
+      <button id="refreshBtn" class="secondary">Refresh</button>
     </div>
 
-    <div class="panel">
-      <h2>Published Apps</h2>
-      <button id="refreshBtn" class="secondary">Refresh Apps</button>
-      <div id="appList">Loading...</div>
-    </div>
+    <div id="appList">Loading apps...</div>
+  </div>
 
-  </section>
+</section>
 </main>
 
 <script>
 const API = "https://muminappstore.muminalmujahid21.workers.dev";
 
 const $ = id => document.getElementById(id);
-let adminToken = sessionStorage.getItem("mumin_admin_token") || "";
 
-function showMessage(id, message, type) {
+let adminToken = sessionStorage.getItem("mumin_admin_token") || "";
+let editingId = null;
+let currentApps = [];
+
+function showMessage(id,message,type){
   const box = $(id);
   box.className = "message " + type;
   box.textContent = message;
 }
 
-function showDashboard() {
+function authHeaders(){
+  return {
+    "Content-Type":"application/json",
+    "Authorization":"Bearer " + adminToken
+  };
+}
+
+function showDashboard(){
   $("loginSection").classList.add("hidden");
   $("dashboard").classList.remove("hidden");
   $("logoutBtn").classList.remove("hidden");
   loadApps();
 }
 
-function logout() {
+function logout(){
   adminToken = "";
   sessionStorage.removeItem("mumin_admin_token");
   $("dashboard").classList.add("hidden");
   $("loginSection").classList.remove("hidden");
   $("logoutBtn").classList.add("hidden");
   $("password").value = "";
+  resetForm();
 }
 
-$("logoutBtn").addEventListener("click", logout);
+$("logoutBtn").addEventListener("click",logout);
 
-async function login(password) {
-  const response = await fetch(API + "/api/admin/login", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({password})
-  });
-
-  const data = await response.json();
-
-  if (!response.ok || !data.success) {
-    throw new Error(data.message || "Login failed");
-  }
-
-  adminToken = data.token;
-  sessionStorage.setItem("mumin_admin_token", adminToken);
-  showDashboard();
-}
-
-$("loginForm").addEventListener("submit", async e => {
+$("loginForm").addEventListener("submit",async e=>{
   e.preventDefault();
 
   $("loginBtn").disabled = true;
   $("loginBtn").textContent = "Logging in...";
 
-  try {
-    await login($("password").value);
-  } catch (error) {
-    showMessage("loginMessage", error.message, "error");
-  } finally {
+  try{
+    const res = await fetch(API + "/api/admin/login",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({password:$("password").value})
+    });
+
+    const data = await res.json();
+
+    if(!res.ok || !data.success){
+      throw new Error(data.message || "Login failed");
+    }
+
+    adminToken = data.token;
+    sessionStorage.setItem("mumin_admin_token",adminToken);
+    showDashboard();
+
+  }catch(err){
+    showMessage("loginMessage",err.message,"error");
+  }finally{
     $("loginBtn").disabled = false;
     $("loginBtn").textContent = "Login";
   }
 });
 
-async function loadApps() {
+async function loadApps(){
   $("appList").textContent = "Loading apps...";
 
-  try {
-    const response = await fetch(API + "/api/apps");
-    const data = await response.json();
+  try{
+    const res = await fetch(API + "/api/apps");
+    const data = await res.json();
 
-    if (!response.ok || !data.success) {
+    if(!res.ok || !data.success){
       throw new Error(data.message || "Could not load apps");
     }
 
+    currentApps = data.apps || [];
     $("appList").replaceChildren();
 
-    if (!data.apps.length) {
+    if(!currentApps.length){
       $("appList").textContent = "এখনো কোনো অ্যাপ প্রকাশ করা হয়নি।";
       return;
     }
 
-    data.apps.forEach(app => {
+    currentApps.forEach(app=>{
       const card = document.createElement("div");
       card.className = "app";
 
-      const name = document.createElement("strong");
-      name.textContent = app.name;
+      const title = document.createElement("strong");
+      title.textContent = app.name;
 
       const info = document.createElement("p");
-      info.textContent = app.category + " | Version " + app.version;
+      info.textContent =
+        app.category + " | Version " + app.version +
+        " | ID: " + app.id;
 
       const description = document.createElement("p");
       description.textContent = app.description || "";
 
-      card.append(name, info, description);
+      const actions = document.createElement("div");
+      actions.className = "app-actions";
+
+      const editBtn = document.createElement("button");
+      editBtn.className = "edit";
+      editBtn.textContent = "✏️ Edit";
+      editBtn.addEventListener("click",()=>editApp(app.id));
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.className = "danger";
+      deleteBtn.textContent = "🗑 Delete";
+      deleteBtn.addEventListener("click",()=>deleteApp(app.id));
+
+      actions.append(editBtn,deleteBtn);
+      card.append(title,info,description,actions);
+
       $("appList").append(card);
     });
 
-  } catch (error) {
-    $("appList").textContent = error.message;
+  }catch(err){
+    $("appList").textContent = err.message;
   }
 }
 
-$("appForm").addEventListener("submit", async e => {
+function editApp(id){
+  const app = currentApps.find(item=>Number(item.id)===Number(id));
+  if(!app) return;
+
+  editingId = id;
+
+  const form = $("appForm");
+
+  [
+    "name","description","category","developer",
+    "icon_url","app_url","download_url",
+    "platform","version","screenshots",
+    "features","instructions"
+  ].forEach(field=>{
+    form.elements[field].value = app[field] || "";
+  });
+
+  $("formTitle").textContent = "✏️ Edit App: " + app.name;
+  $("saveBtn").textContent = "Update App";
+  $("cancelEdit").classList.remove("hidden");
+
+  $("editorPanel").scrollIntoView({behavior:"smooth"});
+}
+
+function resetForm(){
+  editingId = null;
+  $("appForm").reset();
+  $("appForm").elements.version.value = "1.0.0";
+  $("formTitle").textContent = "➕ Add New App";
+  $("saveBtn").textContent = "Publish App";
+  $("cancelEdit").classList.add("hidden");
+}
+
+$("cancelEdit").addEventListener("click",resetForm);
+
+async function deleteApp(id){
+  const app = currentApps.find(item=>Number(item.id)===Number(id));
+
+  if(!app) return;
+
+  if(!confirm('তুমি কি "' + app.name + '" অ্যাপটি মুছে ফেলতে চাও?')){
+    return;
+  }
+
+  try{
+    const res = await fetch(API + "/api/apps/" + id,{
+      method:"DELETE",
+      headers:authHeaders()
+    });
+
+    const data = await res.json();
+
+    if(!res.ok || !data.success){
+      if(res.status===401) logout();
+      throw new Error(data.message || "Delete failed");
+    }
+
+    if(Number(editingId)===Number(id)) resetForm();
+
+    showMessage("appMessage","অ্যাপটি সফলভাবে Delete হয়েছে।","success");
+    await loadApps();
+
+  }catch(err){
+    showMessage("appMessage",err.message,"error");
+  }
+}
+
+$("appForm").addEventListener("submit",async e=>{
   e.preventDefault();
 
-  if (!adminToken) {
-    showMessage("appMessage", "Please login again.", "error");
+  if(!adminToken){
     logout();
     return;
   }
@@ -302,42 +459,64 @@ $("appForm").addEventListener("submit", async e => {
   const form = new FormData(e.target);
   const app = Object.fromEntries(form.entries());
 
-  $("addBtn").disabled = true;
-  $("addBtn").textContent = "Publishing...";
+  // Screenshot URL-গুলো JSON array হিসেবে সংরক্ষণ
+  app.screenshots = app.screenshots
+    .split(/\n/)
+    .map(url=>url.trim())
+    .filter(Boolean);
 
-  try {
-    const response = await fetch(API + "/api/apps", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + adminToken
-      },
-      body: JSON.stringify(app)
-    });
+  // Features-গুলো JSON array হিসেবে সংরক্ষণ
+  app.features = app.features
+    .split(/\n/)
+    .map(item=>item.trim())
+    .filter(Boolean);
 
-    const data = await response.json();
+  $("saveBtn").disabled = true;
+  $("saveBtn").textContent = editingId ? "Updating..." : "Publishing...";
 
-    if (!response.ok || !data.success) {
-      if (response.status === 401) logout();
-      throw new Error(data.message || "App could not be added");
+  try{
+    const isEditing = editingId !== null;
+
+    const res = await fetch(
+      isEditing
+        ? API + "/api/apps/" + editingId
+        : API + "/api/apps",
+      {
+        method:isEditing ? "PATCH" : "POST",
+        headers:authHeaders(),
+        body:JSON.stringify(app)
+      }
+    );
+
+    const data = await res.json();
+
+    if(!res.ok || !data.success){
+      if(res.status===401) logout();
+      throw new Error(data.message || "Operation failed");
     }
 
-    showMessage("appMessage", "অভিনন্দন! অ্যাপ সফলভাবে যোগ হয়েছে।", "success");
-    e.target.reset();
-    e.target.version.value = "1.0.0";
-    loadApps();
+    showMessage(
+      "appMessage",
+      isEditing
+        ? "অ্যাপ সফলভাবে Update হয়েছে!"
+        : "নতুন অ্যাপ সফলভাবে Publish হয়েছে!",
+      "success"
+    );
 
-  } catch (error) {
-    showMessage("appMessage", error.message, "error");
-  } finally {
-    $("addBtn").disabled = false;
-    $("addBtn").textContent = "Publish App";
+    resetForm();
+    await loadApps();
+
+  }catch(err){
+    showMessage("appMessage",err.message,"error");
+  }finally{
+    $("saveBtn").disabled = false;
+    $("saveBtn").textContent = editingId ? "Update App" : "Publish App";
   }
 });
 
-$("refreshBtn").addEventListener("click", loadApps);
+$("refreshBtn").addEventListener("click",loadApps);
 
-if (adminToken) {
+if(adminToken){
   showDashboard();
 }
 </script>
