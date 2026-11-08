@@ -3,51 +3,119 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10251d">
+  <meta name="theme-color" content="#071b2c">
   <meta name="description" content="Mumin App Store — useful apps by Mumin Al Mujahid.">
   <title>Mumin App Store</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{--navy:#071b2c;--navy2:#0b2c43;--teal:#16c7bd;--paper:#f4f7fa;--ink:#102437;--muted:#687b8c;--line:#e0e8ee;--white:#fff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif}
+    button,input{font:inherit}button{cursor:pointer}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(4vw,20px);position:sticky;top:0;z-index:5}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}.brand-logo{width:50px;height:50px;object-fit:cover;border-radius:13px;border:1px solid var(--line)}.brand b{display:block;font-size:17px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.install-top,.btn-primary{border:0;border-radius:12px;background:var(--teal);color:#052536;font-weight:800;padding:12px 17px}
+    .wrap{max-width:1180px;margin:auto;padding:28px 22px 65px}.hero{background:linear-gradient(120deg,#061727,#0b3851);border-radius:26px;color:#fff;padding:48px 5%;display:grid;grid-template-columns:1.35fr .65fr;gap:24px;align-items:center;min-height:290px;overflow:hidden}
+    .eyebrow{font-size:10px;letter-spacing:2px;font-weight:800;color:var(--teal)}.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.12;letter-spacing:-1.8px;margin:14px 0}.hero h1 em{font-style:normal;color:var(--teal)}.hero p{color:#d0e0e9;line-height:1.7;max-width:570px}.search{display:flex;align-items:center;gap:10px;background:#fff;color:#233b4c;border-radius:13px;padding:0 15px;max-width:470px;margin-top:23px}.search span{font-size:23px}.search input{width:100%;border:0;outline:0;padding:15px 0;background:transparent;color:var(--ink)}
+    .hero-visual{display:grid;place-items:center;min-height:190px}.hero-logo{width:min(205px,80%);aspect-ratio:1;object-fit:cover;border-radius:35px;box-shadow:0 20px 55px #0006;border:1px solid #ffffff44}
+    .quick-stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;color:#c7dce7;font-size:12px}.quick-stats b{color:#fff;font-size:15px;margin-right:4px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:34px 0 15px}.section-head h2{font-size:26px;margin:5px 0}.muted{font-size:12px;color:var(--muted)}
+    .categories{display:flex;gap:8px;overflow-x:auto;padding:3px 0 12px;scrollbar-width:thin}.chip{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#496071;padding:9px 15px;border-radius:99px}.chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .app-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.app-card{background:#fff;border:1px solid var(--line);border-radius:19px;padding:17px;display:flex;gap:13px;align-items:flex-start;cursor:pointer;transition:.18s;min-height:148px}.app-card:hover{transform:translateY(-3px);box-shadow:0 14px 35px #09253b12;border-color:#b7d9dc}
+    .app-icon{width:66px;height:66px;flex:0 0 66px;border-radius:18px;display:grid;place-items:center;overflow:hidden;background:#e9f4f5;color:var(--navy);font-size:25px;font-weight:800}.app-icon img{width:100%;height:100%;object-fit:cover}.app-info{min-width:0;flex:1}.app-info h3{font-size:16px;margin:2px 0 6px}.app-info p{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 10px}.tag{display:inline-block;padding:4px 8px;background:#eaf7f6;color:#087d78;border-radius:6px;font-size:10px;font-weight:700}.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:11px}.details-link{font-size:11px;color:#087d78;font-weight:800}
+    .empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);background:#fff;border-radius:16px}
+    .info-strip{margin-top:38px;padding:24px;border-radius:20px;background:#e7f1f5;display:flex;justify-content:space-between;gap:20px;align-items:center}.info-strip h2{margin:5px 0;font-size:21px}.info-strip p{margin:0;color:#5e7382;font-size:13px;line-height:1.6}.info-icon{font-size:35px;color:#087d78}
+    footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px max(4vw,20px);border-top:1px solid var(--line);background:#fff;color:var(--muted);font-size:11px}
+    dialog{border:0;border-radius:23px;padding:0;width:min(760px,calc(100% - 24px));max-height:88vh;overflow:auto;box-shadow:0 25px 90px #0005;color:var(--ink)}dialog::backdrop{background:#031321bb;backdrop-filter:blur(3px)}.detail-head{background:linear-gradient(120deg,#071b2c,#0b3851);color:#fff;padding:27px;display:flex;gap:17px;align-items:center;position:relative}.detail-icon{width:78px;height:78px;border-radius:20px;overflow:hidden;background:#fff;color:var(--navy);display:grid;place-items:center;font-size:32px;flex:0 0 78px}.detail-icon img{width:100%;height:100%;object-fit:cover}.detail-head h2{margin:7px 0 5px;font-size:25px}.detail-head p{margin:0;color:#d0e0e9;font-size:12px}.close{position:absolute;right:17px;top:15px;border:0;border-radius:50%;width:35px;height:35px;background:#ffffff22;color:#fff;font-size:23px}.detail-body{padding:24px 27px 28px}.detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px}.btn-secondary{display:inline-block;border:1px solid var(--line);border-radius:12px;padding:11px 16px;color:var(--ink);text-decoration:none;font-size:13px;font-weight:700}.btn-primary{text-decoration:none;display:inline-block;font-size:13px}.detail-body h3{font-size:16px;margin:22px 0 10px}.detail-description{color:#536a7b;line-height:1.75;font-size:14px}.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.meta-box{background:#f3f7f9;padding:12px;border-radius:12px}.meta-box small{display:block;color:var(--muted);font-size:10px}.meta-box b{display:block;font-size:12px;margin-top:5px}.screenshots{display:flex;gap:12px;overflow:auto;padding:3px 0 8px}.shot-placeholder{min-width:145px;height:235px;border:1px dashed #b9cbd5;border-radius:17px;background:#f6fafb;display:grid;place-items:center;text-align:center;padding:15px;color:#728796;font-size:12px}.shot-placeholder strong{display:block;color:#456071;font-size:13px;margin-bottom:7px}.note{font-size:11px;color:var(--muted);line-height:1.6}
+    @media(max-width:800px){.app-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr .4fr;padding:35px 5%}.hero-logo{width:145px}}
+    @media(max-width:560px){.topbar{height:66px}.brand-logo{width:43px;height:43px}.brand b{font-size:15px}.wrap{padding:18px 14px 45px}.hero{display:block;padding:30px 22px;min-height:0}.hero-visual{display:none}.hero h1{font-size:37px}.app-grid{grid-template-columns:1fr}.app-card{min-height:0}.section-head h2{font-size:23px}.info-strip{padding:19px}.detail-head{padding:25px 18px}.detail-body{padding:20px 18px}.meta-grid{grid-template-columns:repeat(2,1fr)}footer{padding:20px 14px}}
+  </style>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#"><img class="brand-logo" src="assets/mumin-app-store-logo.jpg" alt="Mumin App Store logo"><span><b>Mumin App Store</b><small>Apps for everyday life</small></span></a>
-    <button id="installBtn" class="install-top" hidden>Install Store</button>
-  </header>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Mumin App Store home">
+    <img class="brand-logo" src="assets/mumin-app-store-logo.jpg" alt="Mumin App Store logo">
+    <span><b>Mumin App Store</b><small>Apps for everyday life</small></span>
+  </a>
+  <button id="installBtn" class="install-top" hidden>Install Store</button>
+</header>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">WELCOME TO YOUR APP WORLD</span>
-        <h1>Discover useful apps.<br><em>All in one place.</em></h1>
-        <p>Explore apps and web tools published by Mumin Al Mujahid.</p>
-        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search apps..." aria-label="Search apps"></label>
-      </div>
-      <div class="hero-art" aria-hidden="true"><div class="orbit">✦</div><div class="phone"><div class="phone-screen"><div class="mini-logo">M</div><i></i><i></i><i></i><strong>Apps made useful</strong></div></div></div>
-    </section>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="eyebrow">WELCOME TO MUMIN APP STORE</span>
+      <h1>আপনার প্রয়োজনীয় অ্যাপ,<br><em>এক জায়গায়।</em></h1>
+      <p>দৈনন্দিন কাজ, শিক্ষা, ইসলামিক সেবা ও প্রয়োজনীয় ডিজিটাল টুলস—সহজে খুঁজুন এবং ব্যবহার করুন।</p>
+      <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="অ্যাপের নাম বা ক্যাটাগরি লিখে খুঁজুন..." aria-label="Search apps"></label>
+      <div class="quick-stats"><span><b id="totalApps">১</b>টি অ্যাপ তালিকাভুক্ত</span><span><b>১৫+</b>টি ক্যাটাগরি</span><span><b>২৪/৭</b> অ্যাক্সেস</span></div>
+    </div>
+    <div class="hero-visual"><img class="hero-logo" src="assets/mumin-app-store-logo.jpg" alt="Mumin App Store"></div>
+  </section>
 
-    <nav class="categories" id="categories" aria-label="App categories">
-      <button class="chip active" data-category="All">All</button>
-      <button class="chip" data-category="AI">AI</button>
-      <button class="chip" data-category="Islamic">Islamic</button>
-      <button class="chip" data-category="Tools">Tools</button>
-      <button class="chip" data-category="Entertainment">Entertainment</button>
-      <button class="chip" data-category="Education">Education</button>
-    </nav>
+  <section class="section-head"><div><span class="eyebrow">BROWSE BY CATEGORY</span><h2>ক্যাটাগরি</h2></div></section>
+  <nav class="categories" id="categories" aria-label="App categories"></nav>
 
-    <section class="section-head"><div><span class="eyebrow">THE COLLECTION</span><h2>Explore apps</h2></div><span id="resultCount" class="muted"></span></section>
-    <section id="appGrid" class="app-grid" aria-live="polite"></section>
+  <section class="section-head"><div><span class="eyebrow">THE APP COLLECTION</span><h2>জনপ্রিয় ও নতুন অ্যাপ</h2></div><span id="resultCount" class="muted"></span></section>
+  <section id="appGrid" class="app-grid" aria-live="polite"></section>
 
-    <section class="admin-note">
-      <div><span class="eyebrow">CREATOR ACCESS</span><h2>Publish your next app</h2><p>The private admin dashboard and secure upload service will be connected in the next development step.</p></div>
-      <span class="lock">⌑</span>
-    </section>
-  </main>
+  <section class="info-strip">
+    <div><span class="eyebrow">COMING NEXT</span><h2>আরও অ্যাপ আসছে</h2><p>এখানে নতুন Web App, PWA এবং Android APK যুক্ত করা হবে। বর্তমানে শুধু যেসব অ্যাপের কার্যকর লিংক আছে, সেগুলোই চালু করা যাবে।</p></div>
+    <span class="info-icon">✦</span>
+  </section>
+</main>
 
-  <footer><span>© <span id="year"></span> Mumin App Store</span><span>Built by Mumin Al Mujahid</span></footer>
-  <dialog id="appDialog" class="app-dialog"><button class="close" id="closeDialog" aria-label="Close">×</button><div id="dialogContent"></div></dialog>
-  <script src="app.js"></script>
+<footer><span>© <span id="year"></span> Mumin App Store</span><span>Built by Mumin Al Mujahid</span></footer>
+
+<dialog id="appDialog" aria-labelledby="detailTitle">
+  <div id="dialogContent"></div>
+</dialog>
+
+<script>
+(() => {
+  const apps = [
+    {id:"mumin-ai",name:"Mumin AI",category:"AI",iconUrl:"https://i.postimg.cc/zfZhsXkW/Mumin-AI-Crescent-Tech-Logo.png",description:"দৈনন্দিন প্রশ্ন, প্রয়োজনীয় সহায়তা এবং ইসলামিক বিষয়সহ নানা কাজে সাহায্যকারী AI সহকারী।",type:"Web App",url:"https://muminalmujahid1.github.io/mumin-ai/",action:"Open app",developer:"Mumin Al Mujahid",platform:"Web / PWA",version:"তথ্য যোগ করা হয়নি",size:"প্রযোজ্য নয়",screenshots:[]},
+    {id:"mumin-calculator",name:"Mumin Calculator",category:"Tools",icon:"＋",description:"দৈনন্দিন হিসাব-নিকাশের জন্য একটি সহজ ক্যালকুলেটর।",type:"Web App",url:"#",action:"Coming soon",developer:"Mumin Al Mujahid",platform:"Web",version:"শীঘ্রই",size:"—",screenshots:[]},
+    {id:"mumin-clock",name:"Mumin Clock",category:"Productivity",icon:"◷",description:"সময় দেখার ও সময়-সম্পর্কিত কাজের জন্য একটি সহজ টুল।",type:"Web App",url:"#",action:"Coming soon",developer:"Mumin Al Mujahid",platform:"Web",version:"শীঘ্রই",size:"—",screenshots:[]},
+    {id:"islamic-library",name:"Islamic Library",category:"Islamic",icon:"☾",description:"ইসলামিক বই, পড়াশোনা ও উপকারী রিসোর্সের জন্য পরিকল্পিত লাইব্রেরি।",type:"Web App",url:"#",action:"Coming soon",developer:"Mumin Al Mujahid",platform:"Web",version:"শীঘ্রই",size:"—",screenshots:[]},
+    {id:"study-tools",name:"Study Tools",category:"Education",icon:"✎",description:"শিক্ষার্থী ও পড়াশোনার কাজে সহায়ক টুলস।",type:"Web App",url:"#",action:"Coming soon",developer:"Mumin Al Mujahid",platform:"Web",version:"শীঘ্রই",size:"—",screenshots:[]}
+  ];
+  const categories=["All","AI","Islamic","Education","Tools","Productivity","Business","Finance","Communication","Social","Entertainment","Games","Health & Fitness","Photography","Lifestyle","News & Books","Developer Tools"];
+  let selected="All";
+  const grid=document.getElementById("appGrid"), search=document.getElementById("searchInput"), count=document.getElementById("resultCount"), catNav=document.getElementById("categories"), dialog=document.getElementById("appDialog"), dialogContent=document.getElementById("dialogContent");
+  const bnDigits=n=>String(n).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
+  document.getElementById("year").textContent=new Date().getFullYear();
+  function iconMarkup(a,large=false){return a.iconUrl?`<img src="${a.iconUrl}" alt="${a.name} logo">`:(a.icon||"✦");}
+  function renderCategories(){catNav.innerHTML=categories.map(c=>`<button class="chip ${c===selected?"active":""}" data-category="${c}">${c==="All"?"সব অ্যাপ":c}</button>`).join("");}
+  function render(){
+    const q=search.value.trim().toLowerCase();
+    const list=apps.filter(a=>(selected==="All"||a.category===selected)&&(`${a.name} ${a.description} ${a.category}`).toLowerCase().includes(q));
+    count.textContent=`${bnDigits(list.length)}টি অ্যাপ`;
+    document.getElementById("totalApps").textContent=bnDigits(apps.length);
+    grid.innerHTML=list.length?list.map(a=>`<article class="app-card" tabindex="0" role="button" aria-label="${a.name} বিস্তারিত দেখুন" data-id="${a.id}">
+      <div class="app-icon">${iconMarkup(a)}</div><div class="app-info"><h3>${a.name}</h3><p>${a.description}</p><span class="tag">${a.category}</span><div class="card-bottom"><span class="muted">${a.type}</span><span class="details-link">বিস্তারিত দেখুন →</span></div></div></article>`).join(""):`<div class="empty">কোনো অ্যাপ পাওয়া যায়নি। অন্য নাম বা ক্যাটাগরি দিয়ে খুঁজুন।</div>`;
+  }
+  function openDetails(a){
+    const canOpen=a.url && a.url!=="#";
+    const shots=a.screenshots.length?a.screenshots.map((src,i)=>`<img src="${src}" alt="${a.name} screenshot ${i+1}" style="height:235px;max-width:180px;object-fit:contain;border-radius:16px;border:1px solid #e0e8ee">`).join(""):`<div class="shot-placeholder"><div><strong>স্ক্রিনশট শীঘ্রই যোগ হবে</strong>এই অ্যাপের আসল স্ক্রিনশট এখানে দেখানো হবে।</div></div>`;
+    dialogContent.innerHTML=`<div class="detail-head"><button class="close" id="closeDialog" aria-label="Close">×</button><div class="detail-icon">${iconMarkup(a,true)}</div><div><span class="tag">${a.category}</span><h2 id="detailTitle">${a.name}</h2><p>${a.type} · ${a.developer}</p></div></div>
+      <div class="detail-body"><div class="detail-actions">${canOpen?`<a class="btn-primary" href="${a.url}" target="_blank" rel="noopener">অ্যাপ খুলুন ↗</a>`:`<span class="btn-secondary">শীঘ্রই আসছে</span>`}<span class="btn-secondary">${a.platform}</span></div>
+      <h3>অ্যাপ সম্পর্কে</h3><p class="detail-description">${a.description}</p>
+      <h3>স্ক্রিনশট</h3><div class="screenshots">${shots}</div>
+      <h3>অ্যাপের তথ্য</h3><div class="meta-grid"><div class="meta-box"><small>ক্যাটাগরি</small><b>${a.category}</b></div><div class="meta-box"><small>ডেভেলপার</small><b>${a.developer}</b></div><div class="meta-box"><small>প্ল্যাটফর্ম</small><b>${a.platform}</b></div><div class="meta-box"><small>ভার্সন</small><b>${a.version}</b></div><div class="meta-box"><small>ফাইল সাইজ</small><b>${a.size}</b></div></div>
+      <p class="note">নোট: এই মুহূর্তে Mumin AI একটি Web App, তাই বাটনটি অ্যাপের ওয়েবসাইট খুলবে। Android APK আপলোড ও সরাসরি ডাউনলোডের সুবিধা পরে যুক্ত করতে হবে।</p></div>`;
+    dialog.showModal();
+    document.getElementById("closeDialog").addEventListener("click",()=>dialog.close());
+  }
+  catNav.addEventListener("click",e=>{const b=e.target.closest("button[data-category]");if(!b)return;selected=b.dataset.category;renderCategories();render();});
+  search.addEventListener("input",render);
+  grid.addEventListener("click",e=>{const card=e.target.closest(".app-card");if(card){const a=apps.find(x=>x.id===card.dataset.id);if(a)openDetails(a);}});
+  grid.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("app-card")){e.preventDefault();const a=apps.find(x=>x.id===e.target.dataset.id);if(a)openDetails(a);}});
+  dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close();});
+  let deferredPrompt;const installBtn=document.getElementById("installBtn");
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false;});
+  installBtn.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true;});
+  if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(console.error));
+  renderCategories();render();
+})();
+</script>
 </body>
 </html>
