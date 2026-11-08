@@ -29,15 +29,8 @@
       --shadow: 0 12px 35px rgba(10, 35, 55, .07);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Hind Siliguri', 'Inter', sans-serif;
@@ -46,18 +39,9 @@
       min-height: 100vh;
     }
 
-    button, input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    a { text-decoration: none; color: inherit; }
 
     .topbar {
       background: var(--navy);
@@ -109,15 +93,8 @@
       letter-spacing: -.5px;
     }
 
-    .brand-name span {
-      color: var(--teal);
-    }
-
-    .brand-sub {
-      color: #a8bdcc;
-      font-size: 11px;
-      margin-top: 2px;
-    }
+    .brand-name span { color: var(--teal); }
+    .brand-sub { color: #a8bdcc; font-size: 11px; margin-top: 2px; }
 
     .nav-links {
       display: flex;
@@ -127,16 +104,7 @@
       color: #d4e1e9;
     }
 
-    .nav-links a:hover {
-      color: var(--teal);
-    }
-
-    .admin-link {
-      border: 1px solid rgba(22,199,177,.5);
-      padding: 9px 16px;
-      border-radius: 9px;
-      color: var(--teal);
-    }
+    .nav-links a:hover { color: var(--teal); }
 
     .hero {
       background:
@@ -176,9 +144,7 @@
       margin-bottom: 19px;
     }
 
-    .hero h1 span {
-      color: var(--teal);
-    }
+    .hero h1 span { color: var(--teal); }
 
     .hero p {
       color: #c5d6e0;
@@ -202,10 +168,7 @@
       transition: .2s;
     }
 
-    .primary-btn {
-      background: var(--teal);
-      color: #05251f;
-    }
+    .primary-btn { background: var(--teal); color: #05251f; }
 
     .primary-btn:hover {
       background: #42dfca;
@@ -218,11 +181,7 @@
       border: 1px solid rgba(255,255,255,.25);
     }
 
-    .hero-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
 
     .hero-logo {
       width: min(260px, 75%);
@@ -261,10 +220,7 @@
       color: var(--navy);
     }
 
-    .stat-card span {
-      color: var(--muted);
-      font-size: 13px;
-    }
+    .stat-card span { color: var(--muted); font-size: 13px; }
 
     main {
       max-width: 1200px;
@@ -280,28 +236,11 @@
       margin-bottom: 23px;
     }
 
-    .section-heading h2 {
-      font-size: 27px;
-      color: var(--navy);
-      font-weight: 700;
-    }
+    .section-heading h2 { font-size: 27px; color: var(--navy); font-weight: 700; }
+    .section-heading p { color: var(--muted); font-size: 14px; margin-top: 3px; }
 
-    .section-heading p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 3px;
-    }
-
-    .search-wrap {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .search-box {
-      position: relative;
-      flex: 1;
-    }
+    .search-wrap { display: flex; gap: 10px; margin-bottom: 22px; }
+    .search-box { position: relative; flex: 1; }
 
     .search-box input {
       width: 100%;
@@ -356,18 +295,13 @@
       transition: .2s;
     }
 
-    .category-btn.active,
-    .category-btn:hover {
+    .category-btn.active, .category-btn:hover {
       background: var(--navy);
       color: white;
       border-color: var(--navy);
     }
 
-    .results-line {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 4px 0 18px;
-    }
+    .results-line { color: var(--muted); font-size: 13px; margin: 4px 0 18px; }
 
     .app-grid {
       display: grid;
@@ -391,12 +325,7 @@
       border-color: #ccece7;
     }
 
-    .app-card-top {
-      display: flex;
-      gap: 13px;
-      align-items: center;
-      margin-bottom: 14px;
-    }
+    .app-card-top { display: flex; gap: 13px; align-items: center; margin-bottom: 14px; }
 
     .app-icon {
       width: 61px;
@@ -414,11 +343,7 @@
       word-break: break-word;
     }
 
-    .app-category {
-      font-size: 12px;
-      color: var(--teal-dark);
-      margin-top: 3px;
-    }
+    .app-category { font-size: 12px; color: var(--teal-dark); margin-top: 3px; }
 
     .app-description {
       color: #6b7a89;
@@ -442,10 +367,7 @@
       gap: 8px;
     }
 
-    .app-card-actions {
-      display: flex;
-      gap: 8px;
-    }
+    .app-card-actions { display: flex; gap: 8px; }
 
     .app-card-actions button {
       flex: 1;
@@ -456,15 +378,8 @@
       font-weight: 600;
     }
 
-    .details-btn {
-      background: #edf3f6;
-      color: var(--navy);
-    }
-
-    .open-btn {
-      background: var(--teal);
-      color: #05251f;
-    }
+    .details-btn { background: #edf3f6; color: var(--navy); }
+    .open-btn { background: var(--teal); color: #05251f; }
 
     .empty-state, .loading-state, .error-state {
       grid-column: 1 / -1;
@@ -476,10 +391,7 @@
       color: var(--muted);
     }
 
-    .empty-state .big-icon {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+    .empty-state .big-icon { font-size: 42px; margin-bottom: 10px; }
 
     .error-state button {
       margin-top: 15px;
@@ -502,15 +414,8 @@
       gap: 20px;
     }
 
-    .install-banner h3 {
-      font-size: 21px;
-      margin-bottom: 5px;
-    }
-
-    .install-banner p {
-      color: #c1d8df;
-      font-size: 13px;
-    }
+    .install-banner h3 { font-size: 21px; margin-bottom: 5px; }
+    .install-banner p { color: #c1d8df; font-size: 13px; }
 
     .install-banner button {
       background: var(--teal);
@@ -522,11 +427,7 @@
       white-space: nowrap;
     }
 
-    footer {
-      background: #061624;
-      color: #b6c7d2;
-      padding: 35px 22px;
-    }
+    footer { background: #061624; color: #b6c7d2; padding: 35px 22px; }
 
     .footer-inner {
       max-width: 1150px;
@@ -538,31 +439,11 @@
       flex-wrap: wrap;
     }
 
-    .footer-brand {
-      color: white;
-      font-weight: 700;
-      font-family: Inter, sans-serif;
-    }
-
-    .footer-brand span {
-      color: var(--teal);
-    }
-
-    .footer-note {
-      font-size: 12px;
-      margin-top: 6px;
-      color: #8ea4b3;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 18px;
-      font-size: 13px;
-    }
-
-    .footer-links a:hover {
-      color: var(--teal);
-    }
+    .footer-brand { color: white; font-weight: 700; font-family: Inter, sans-serif; }
+    .footer-brand span { color: var(--teal); }
+    .footer-note { font-size: 12px; margin-top: 6px; color: #8ea4b3; }
+    .footer-links { display: flex; gap: 18px; font-size: 13px; }
+    .footer-links a:hover { color: var(--teal); }
 
     .copyright {
       max-width: 1150px;
@@ -574,7 +455,6 @@
       color: #78909f;
     }
 
-    /* App details modal */
     .modal {
       display: none;
       position: fixed;
@@ -587,9 +467,7 @@
       justify-content: center;
     }
 
-    .modal.show {
-      display: flex;
-    }
+    .modal.show { display: flex; }
 
     .modal-content {
       width: 100%;
@@ -632,21 +510,10 @@
       background: #edf3f6;
     }
 
-    .modal-app-head h2 {
-      font-size: 22px;
-      color: var(--navy);
-    }
+    .modal-app-head h2 { font-size: 22px; color: var(--navy); }
+    .modal-app-head p { color: var(--muted); font-size: 13px; }
 
-    .modal-app-head p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
+    .modal-actions { display: flex; gap: 10px; margin-bottom: 24px; }
 
     .modal-actions a {
       text-align: center;
@@ -657,25 +524,11 @@
       font-size: 14px;
     }
 
-    .modal-open {
-      background: var(--teal);
-      color: #05251f;
-    }
+    .modal-open { background: var(--teal); color: #05251f; }
+    .modal-download { background: var(--navy); color: white; }
 
-    .modal-download {
-      background: var(--navy);
-      color: white;
-    }
-
-    .modal-section {
-      margin-top: 20px;
-    }
-
-    .modal-section h3 {
-      font-size: 17px;
-      color: var(--navy);
-      margin-bottom: 9px;
-    }
+    .modal-section { margin-top: 20px; }
+    .modal-section h3 { font-size: 17px; color: var(--navy); margin-bottom: 9px; }
 
     .modal-section p, .modal-section li {
       color: #667789;
@@ -683,16 +536,8 @@
       line-height: 1.85;
     }
 
-    .modal-section ul {
-      padding-left: 22px;
-    }
-
-    .screenshots {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-    }
+    .modal-section ul { padding-left: 22px; }
+    .screenshots { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; }
 
     .screenshots img {
       height: 190px;
@@ -717,132 +562,53 @@
       transition: .3s;
       box-shadow: var(--shadow);
       font-size: 13px;
+      max-width: calc(100% - 30px);
+      text-align: center;
     }
 
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
     @media (max-width: 950px) {
-      .app-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-      .hero-inner {
-        grid-template-columns: 1fr .6fr;
-      }
+      .app-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero-inner { grid-template-columns: 1fr .6fr; }
     }
 
     @media (max-width: 700px) {
-      .nav {
-        min-height: 65px;
-        padding: 9px 15px;
-      }
-      .brand img {
-        width: 42px;
-        height: 42px;
-      }
-      .brand-name {
-        font-size: 16px;
-      }
-      .nav-links {
-        gap: 12px;
-        font-size: 12px;
-      }
-      .nav-links a:not(.admin-link) {
-        display: none;
-      }
-      .admin-link {
-        padding: 7px 10px;
-      }
-      .hero {
-        padding: 55px 20px 65px;
-      }
-      .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero p {
-        margin: auto;
-      }
-      .hero-actions {
-        justify-content: center;
-      }
-      .hero-visual {
-        display: none;
-      }
-      .stats {
-        gap: 8px;
-        padding: 0 12px;
-      }
-      .stat-card {
-        padding: 13px 5px;
-      }
-      .stat-card strong {
-        font-size: 20px;
-      }
-      .stat-card span {
-        font-size: 11px;
-      }
-      main {
-        padding: 48px 14px 60px;
-      }
-      .section-heading h2 {
-        font-size: 23px;
-      }
-      .app-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 11px;
-      }
-      .app-card {
-        padding: 12px;
-        border-radius: 13px;
-      }
-      .app-icon {
-        width: 49px;
-        height: 49px;
-        border-radius: 12px;
-      }
-      .app-card-top {
-        gap: 9px;
-      }
-      .app-card h3 {
-        font-size: 14px;
-      }
-      .app-description {
-        font-size: 12px;
-        min-height: 40px;
-      }
-      .app-card-actions button {
-        font-size: 11px;
-      }
-      .install-banner {
-        padding: 22px 17px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .modal-content {
-        padding: 22px 17px;
-      }
+      .nav { min-height: 65px; padding: 9px 15px; }
+      .brand img { width: 42px; height: 42px; }
+      .brand-name { font-size: 16px; }
+      .nav-links { gap: 12px; font-size: 12px; }
+      .hero { padding: 55px 20px 65px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero p { margin: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { display: none; }
+      .stats { gap: 8px; padding: 0 12px; }
+      .stat-card { padding: 13px 5px; }
+      .stat-card strong { font-size: 20px; }
+      .stat-card span { font-size: 11px; }
+      main { padding: 48px 14px 60px; }
+      .section-heading h2 { font-size: 23px; }
+      .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+      .app-card { padding: 12px; border-radius: 13px; }
+      .app-icon { width: 49px; height: 49px; border-radius: 12px; }
+      .app-card-top { gap: 9px; }
+      .app-card h3 { font-size: 14px; }
+      .app-description { font-size: 12px; min-height: 40px; }
+      .app-card-actions button { font-size: 11px; }
+      .install-banner { padding: 22px 17px; flex-direction: column; align-items: flex-start; }
+      .modal-content { padding: 22px 17px; }
     }
 
     @media (max-width: 380px) {
-      .app-grid {
-        grid-template-columns: 1fr;
-      }
-      .app-card-top {
-        gap: 13px;
-      }
-      .app-icon {
-        width: 58px;
-        height: 58px;
-      }
+      .app-grid { grid-template-columns: 1fr; }
+      .app-card-top { gap: 13px; }
+      .app-icon { width: 58px; height: 58px; }
     }
   </style>
 </head>
 
 <body>
-
   <div class="topbar">
     দরকারি অ্যাপ, এখন এক জায়গায় — Mumin App Store
   </div>
@@ -861,7 +627,6 @@
         <a href="./">হোম</a>
         <a href="#apps">অ্যাপসমূহ</a>
         <a href="#about">আমাদের সম্পর্কে</a>
-        <a class="admin-link" href="./admin.html">Admin Panel</a>
       </div>
     </nav>
   </header>
@@ -953,7 +718,6 @@
       <div class="footer-links">
         <a href="./">Home</a>
         <a href="#apps">Apps</a>
-        <a href="./admin.html">Admin</a>
       </div>
     </div>
 
@@ -962,7 +726,6 @@
     </div>
   </footer>
 
-  <!-- App Details Modal -->
   <div class="modal" id="appModal">
     <div class="modal-content">
       <button class="modal-close" id="modalClose" aria-label="Close">×</button>
@@ -973,7 +736,6 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // Cloudflare Worker API
     const API_URL = "https://muminappstore.muminalmujahid21.workers.dev/api/apps";
 
     let allApps = [];
@@ -1297,7 +1059,6 @@
     });
 
     searchInput.addEventListener("input", renderApps);
-
     document.getElementById("searchButton").addEventListener("click", renderApps);
 
     // PWA installation
@@ -1334,6 +1095,5 @@
     // Load apps from Cloudflare D1 through Worker API
     loadApps();
   </script>
-
 </body>
 </html>
