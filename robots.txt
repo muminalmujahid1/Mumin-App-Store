@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muminalmujahid1.github.io/Mumin-App-Store/sitemap.xml
