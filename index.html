@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10251d">
+  <meta name="description" content="Mumin App Store — useful apps by Mumin Al Mujahid.">
+  <title>Mumin App Store</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">M</span><span><b>Mumin App Store</b><small>Apps for everyday life</small></span></a>
+    <button id="installBtn" class="install-top" hidden>Install Store</button>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">WELCOME TO YOUR APP WORLD</span>
+        <h1>Discover useful apps.<br><em>All in one place.</em></h1>
+        <p>Explore apps and web tools published by Mumin Al Mujahid.</p>
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search apps..." aria-label="Search apps"></label>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="orbit">✦</div><div class="phone"><div class="phone-screen"><div class="mini-logo">M</div><i></i><i></i><i></i><strong>Apps made useful</strong></div></div></div>
+    </section>
+
+    <nav class="categories" id="categories" aria-label="App categories">
+      <button class="chip active" data-category="All">All</button>
+      <button class="chip" data-category="AI">AI</button>
+      <button class="chip" data-category="Islamic">Islamic</button>
+      <button class="chip" data-category="Tools">Tools</button>
+      <button class="chip" data-category="Entertainment">Entertainment</button>
+      <button class="chip" data-category="Education">Education</button>
+    </nav>
+
+    <section class="section-head"><div><span class="eyebrow">THE COLLECTION</span><h2>Explore apps</h2></div><span id="resultCount" class="muted"></span></section>
+    <section id="appGrid" class="app-grid" aria-live="polite"></section>
+
+    <section class="admin-note">
+      <div><span class="eyebrow">CREATOR ACCESS</span><h2>Publish your next app</h2><p>The private admin dashboard and secure upload service will be connected in the next development step.</p></div>
+      <span class="lock">⌑</span>
+    </section>
+  </main>
+
+  <footer><span>© <span id="year"></span> Mumin App Store</span><span>Built by Mumin Al Mujahid</span></footer>
+  <dialog id="appDialog" class="app-dialog"><button class="close" id="closeDialog" aria-label="Close">×</button><div id="dialogContent"></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
